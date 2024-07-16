@@ -20,25 +20,26 @@ spec:
           #          args:
           #            - "--ingnore-db-dir=lost+found"
           volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: vpro-db-data
+          - mountPath: /var/lib/mysql
+            name: vpro-db-data
           ports:
-            - name: vprodb-port
-              containerPort: 3306
+          - name: vprodb-port
+            containerPort: 3306
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: db-pass
-      # Volume section:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: app-secret
+                key: db-pass
       nodeSelector:
         zone: us-east-1a
       volumes:
         - name: vpro-db-data
+          # This AWS EBS volume must already exist.
           awsElasticBlockStore:
-            volumeID: vol-0af35f5b6f8a9799a
+            volumeID: vol-099d111d06d4a6895
             fsType: ext4
+
       initContainers:
         - name: busybox
           image: busybox:latest
