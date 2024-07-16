@@ -20,7 +20,7 @@ spec:
           #          args:
           #            - "--ingnore-db-dir=lost+found"
           volumeMounts:
-            - mountPath: /var/lib/mysql
+            - mountPath: /var/lib/mysq
               name: vpro-db-data
           ports:
             - name: vprodb-port
