@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: vprodb
-          image: vprofile/vprofiledb
+          image: sonako2000/raf-vprofile-db
           #          args:
           #            - "--ingnore-db-dir=lost+found"
           volumeMounts:
@@ -37,7 +37,7 @@ spec:
         - name: vpro-db-data
           # This AWS EBS volume must already exist.
           awsElasticBlockStore:
-            volumeID: vol-099d111d06d4a6895
+            volumeID: vol-00a5a16def58a15d7
             fsType: ext4
 
       initContainers:
